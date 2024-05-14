@@ -7,7 +7,7 @@ const Banner = () => {
                 <h1 className="text-5xl font-bold mb-5">Effortless Task Management: Organize, Collaborate, and Stay Productive</h1>
                 <p className="text-lg mb-5">Empower Your Team to Achieve More. Effortlessly Prioritize Tasks, Collaborate Seamlessly, and Stay on Track with Our Intuitive Task Management Platform.</p>
                 <Link to="/login">
-                    <button className="bg-purple-700 text-slate-200 py-3 px-5 rounded-3xl">Get Start</button>
+                    <button className="bg-purple-700 text-slate-200 py-3 px-5 rounded-3xl">Let's Get Started</button>
                 </Link>
             </div>
             <div className="w-3/5">

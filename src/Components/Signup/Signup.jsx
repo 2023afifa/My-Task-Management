@@ -20,25 +20,25 @@ const Signup = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="name" className="input input-bordered border-fuchsia-700 rounded-sm" required />
+                            <input type="text" name="name" placeholder="name" className="input input-bordered border-fuchsia-700 rounded-3xl" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered border-fuchsia-700 rounded-sm" required />
+                            <input type="email" name="email" placeholder="email" className="input input-bordered border-fuchsia-700 rounded-3xl" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered border-fuchsia-700 rounded-sm" required />
+                            <input type="password" name="password" placeholder="password" className="input input-bordered border-fuchsia-700 rounded-3xl" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo</span>
                             </label>
-                            <input type="text" name="photo" placeholder="photo" className="input input-bordered border-fuchsia-700 rounded-sm" required />
+                            <input type="text" name="photo" placeholder="photo" className="input input-bordered border-fuchsia-700 rounded-3xl" required />
                         </div>
                         {/* {
                         errorMessage && <p className="text-center text-red-500">{errorMessage}</p>
