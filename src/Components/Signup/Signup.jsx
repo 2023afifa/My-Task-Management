@@ -44,7 +44,7 @@ const Signup = () => {
                         errorMessage && <p className="text-center text-red-500">{errorMessage}</p>
                     } */}
                         <div className="mt-4 mx-auto">
-                            <button className="btn normal-case border-none text-lg font-semibold bg-fuchsia-600 text-white rounded-3xl hover:bg-fuchsia-500">Register</button>
+                            <button className="btn normal-case px-5 border-none text-lg font-semibold bg-fuchsia-600 text-white rounded-3xl hover:bg-fuchsia-500">Register</button>
                         </div>
                     </form>
                 </div>
