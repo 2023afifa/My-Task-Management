@@ -1,5 +1,6 @@
-.navLink ul a:hover,
-.navLink ul a.active {
+.navStyle ul a:hover,
+.navStyle ul a.active {
     background-color: transparent !important;
-    color: rgb(8 145 178) !important;
+    color: black !important;
+    text-decoration: underline !important;
 }
