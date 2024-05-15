@@ -1,13 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../HomePage/Navbar/Navbar";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { googleLoginUser, loginUser } from "../redux/features/user/userSlice";
 
 const Login = () => {
-    const handleLogin = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+    const { isLoading, email } = useSelector((state) => state.userSlice);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLoading && email) {
+            navigate(location?.state ? location?.state : "/");
+        }
+    }, [isLoading, email])
+
+    const handleLogin = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        setErrorMessage("");
+
+        dispatch(loginUser({ email, password }));
 
     }
 
     const handleGoogleLogIn = () => {
-
+        dispatch(googleLoginUser());
     }
 
     return (
@@ -32,9 +53,9 @@ const Login = () => {
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered border-blue-700 rounded-3xl" required />
                         </div>
-                        {/* {
+                        {
                             errorMessage && <p className="text-center text-red-500">{errorMessage}</p>
-                        } */}
+                        }
                         <div className="mt-6 mx-auto">
                             <button className="btn normal-case text-lg bg-blue-700 text-white hover:bg-blue-600 rounded-3xl border-none">Login</button>
                         </div>

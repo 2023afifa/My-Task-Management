@@ -6,7 +6,7 @@ import auth from "../../Firebase/firebase.config";
 import { logout } from "../../redux/features/user/userSlice";
 
 const Navbar = () => {
-    const { name, photo, email } = useSelector((state) => state.userSlice);
+    const { photo, email } = useSelector((state) => state.userSlice);
     const dispatch = useDispatch();
 
     const handleLogout = () => {
