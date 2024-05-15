@@ -107,24 +107,24 @@ const userSlice = createSlice({
                 state.email = "";
                 state.error = action.error.message;
             })
-            // .addCase(googleLoginUser.pending, (state) => {
-            //     state.isLoading = true;
-            //     state.isError = false;
-            //     state.email = "";
-            //     state.error = "";
-            // })
-            // .addCase(googleLoginUser.fulfilled, (state, { payload }) => {
-            //     state.isLoading = false;
-            //     state.isError = false;
-            //     state.email = payload.email;
-            //     state.error = "";
-            // })
-            // .addCase(googleLoginUser.rejected, (state, action) => {
-            //     state.isLoading = false;
-            //     state.isError = true;
-            //     state.email = "";
-            //     state.error = action.error.message;
-            // })
+            .addCase(googleLoginUser.pending, (state) => {
+                state.isLoading = true;
+                state.isError = false;
+                state.email = "";
+                state.error = "";
+            })
+            .addCase(googleLoginUser.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.email = payload.email;
+                state.error = "";
+            })
+            .addCase(googleLoginUser.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.email = "";
+                state.error = action.error.message;
+            })
     },
 })
 
