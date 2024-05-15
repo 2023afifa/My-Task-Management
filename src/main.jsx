@@ -9,6 +9,9 @@ import Signup from './Components/Signup/Signup.jsx';
 import Login from './Components/Login/Login.jsx';
 import { Provider } from 'react-redux';
 import store from './Components/redux/store.js';
+import PrivateRoute from './Components/Routes/PrivateRoute.jsx';
+import Dashboard from './Components/DashboardPage/Dashboard/Dashboard.jsx';
+import AllTasks from './Components/DashboardPage/AllTasks/AllTasks.jsx';
 
 
 const router = createBrowserRouter([
@@ -31,6 +34,21 @@ const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path: "dashboard",
+    errorElement: <ErrorPage></ErrorPage>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: "alltasks",
+        element: <PrivateRoute><AllTasks></AllTasks></PrivateRoute>,
+      },
+      // {
+      //   path: "mytask",
+      //   element: <PrivateRoute><MyTasks></MyTasks></PrivateRoute>,
+      // }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

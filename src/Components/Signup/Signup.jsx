@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
 import Navbar from "../HomePage/Navbar/Navbar";
+import { useState } from "react";
+import { createUser } from "../redux/features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const Signup = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+    const dispatch = useDispatch();
 
-    const handleRegister = () => {
+    const handleRegister = e => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const photo = e.target.photo.value;
+        console.log(name, email, photo, password);
 
+        setErrorMessage("");
+
+        if (password.length < 6) {
+            setErrorMessage("Password should be at least 6 characters");
+            return;
+        }
+
+        dispatch(createUser({ email, password, name, photo }));
     }
 
     return (
@@ -38,11 +57,11 @@ const Signup = () => {
                             <label className="label">
                                 <span className="label-text">Photo</span>
                             </label>
-                            <input type="text" name="photo" placeholder="photo" className="input input-bordered border-fuchsia-700 rounded-3xl" required />
+                            <input type="file" name="photo" className="input input-bordered pt-2 border-fuchsia-700 rounded-3xl" required />
                         </div>
-                        {/* {
-                        errorMessage && <p className="text-center text-red-500">{errorMessage}</p>
-                    } */}
+                        {
+                            errorMessage && <p className="text-center text-red-500">{errorMessage}</p>
+                        }
                         <div className="mt-4 mx-auto">
                             <button className="btn normal-case px-5 border-none text-lg font-semibold bg-fuchsia-600 text-white rounded-3xl hover:bg-fuchsia-500">Register</button>
                         </div>

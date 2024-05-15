@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import auth from "../../../Firebase/firebase.config"
 
 const initialState = {
@@ -10,20 +10,34 @@ const initialState = {
     error: "",
 };
 
-export const createUser = createAsyncThunk("userSlice/createUser", async ({ email, password }) => {
+export const createUser = createAsyncThunk("userSlice/createUser", async ({ email, password, name, photo }) => {
     const data = await createUserWithEmailAndPassword(auth, email, password)
-    // await updateProfile(auth.currentUser, {
-    //     displayName: name,
-    // })
+    await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photo,
+    })
     console.log(data);
 
-    return;
+    return {
+        email: data.user.email,
+        name: data.user.displayName,
+        photo: data.user.photoURL,
+    };
 })
 
 const userSlice = createSlice({
     name: "userSlice",
     initialState,
-    reducers: {},
+    reducers: {
+        setUser: (state, { payload }) => {
+            state.name = payload.name;
+            state.email = payload.email;
+            state.photo = payload.photo;
+        },
+        toggleLoading: (state, { payload }) => {
+            state.isLoading = payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(createUser.pending, (state) => {
@@ -38,6 +52,7 @@ const userSlice = createSlice({
                 state.isError = false;
                 state.email = payload.email;
                 state.name = payload.name;
+                state.photo = payload.photo;
                 state.error = "";
             })
             .addCase(createUser.rejected, (state, action) => {
@@ -49,5 +64,8 @@ const userSlice = createSlice({
             });
     },
 })
+
+
+export const { setUser, toggleLoading } = userSlice.actions;
 
 export default userSlice.reducer;
