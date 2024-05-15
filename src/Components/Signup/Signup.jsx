@@ -1,12 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../HomePage/Navbar/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createUser } from "../redux/features/user/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Signup = () => {
     const [errorMessage, setErrorMessage] = useState("");
+    const { isLoading, email } = useSelector((state) => state.userSlice);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLoading && email) {
+            navigate("/");
+        }
+    }, [isLoading, email])
 
     const handleRegister = e => {
         e.preventDefault();
@@ -57,7 +65,7 @@ const Signup = () => {
                             <label className="label">
                                 <span className="label-text">Photo</span>
                             </label>
-                            <input type="file" name="photo" className="input input-bordered pt-2 border-fuchsia-700 rounded-3xl" required />
+                            <input type="text" name="photo" placeholder="photo" className="input input-bordered border-fuchsia-700 rounded-3xl" required />
                         </div>
                         {
                             errorMessage && <p className="text-center text-red-500">{errorMessage}</p>

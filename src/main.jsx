@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import Root from './Components/Root/Root.jsx';
 import Home from './Components/HomePage/Home/Home.jsx';
@@ -12,9 +12,10 @@ import store from './Components/redux/store.js';
 import PrivateRoute from './Components/Routes/PrivateRoute.jsx';
 import Dashboard from './Components/DashboardPage/Dashboard/Dashboard.jsx';
 import AllTasks from './Components/DashboardPage/AllTasks/AllTasks.jsx';
+import App from './App.jsx';
 
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage></ErrorPage>,
@@ -41,12 +42,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "alltasks",
-        element: <PrivateRoute><AllTasks></AllTasks></PrivateRoute>,
+        element: <AllTasks></AllTasks>,
       },
-      // {
-      //   path: "mytask",
-      //   element: <PrivateRoute><MyTasks></MyTasks></PrivateRoute>,
-      // }
     ]
   }
 ]);
@@ -54,7 +51,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <App></App>
     </Provider>
   </React.StrictMode>,
 )

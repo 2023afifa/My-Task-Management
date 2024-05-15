@@ -6,7 +6,7 @@ const Banner = () => {
             <div className="flex-1 pl-10">
                 <h1 className="text-5xl font-bold mb-5">Effortless Task Management: Organize, Collaborate, and Stay Productive</h1>
                 <p className="text-lg mb-5">Empower Your Team to Achieve More. Effortlessly Prioritize Tasks, Collaborate Seamlessly, and Stay on Track with Our Intuitive Task Management Platform.</p>
-                <Link to={location?.state ? "/login" : "/dashboard"}>
+                <Link to={location?.state ? "/dashboard" : "/login"}>
                     <button className="bg-purple-700 text-slate-200 py-3 px-5 rounded-3xl">Let's Get Started</button>
                 </Link>
             </div>

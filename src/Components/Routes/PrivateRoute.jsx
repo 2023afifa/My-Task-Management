@@ -10,23 +10,8 @@ import { setUser, toggleLoading } from '../redux/features/user/userSlice';
 const PrivateRoute = ({ children }) => {
     const { pathname } = useLocation();
     const { email, isLoading } = useSelector((state) => state.userSlice);
-    const dispatch = useDispatch();
+    console.log(email);
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                dispatch(setUser({
-                    name: user.displayName,
-                    email: user.email,
-                    photo: user.photoURL,
-                }));
-                dispatch(toggleLoading(false));
-            }
-            else {
-                dispatch(toggleLoading(false));
-            }
-        })
-    }, [])
 
     if (isLoading) {
         return <span className="loading loading-dots loading-md"></span>;

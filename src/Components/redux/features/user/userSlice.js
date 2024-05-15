@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import auth from "../../../Firebase/firebase.config"
 
 const initialState = {
@@ -25,6 +25,16 @@ export const createUser = createAsyncThunk("userSlice/createUser", async ({ emai
     };
 })
 
+
+export const loginUser = createAsyncThunk("userSlice/loginUser", async ({ email, password }) => {
+    const data = await signInWithEmailAndPassword(auth, email, password)
+    console.log(data);
+
+    return {
+        email: data.user.email,
+    };
+})
+
 const userSlice = createSlice({
     name: "userSlice",
     initialState,
@@ -37,6 +47,11 @@ const userSlice = createSlice({
         toggleLoading: (state, { payload }) => {
             state.isLoading = payload;
         },
+        logout: (state) => {
+            state.name = "";
+            state.email = "";
+            state.photo = "";
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -45,6 +60,7 @@ const userSlice = createSlice({
                 state.isError = false;
                 state.email = "";
                 state.name = "";
+                state.photo = "";
                 state.error = "";
             })
             .addCase(createUser.fulfilled, (state, { payload }) => {
@@ -60,12 +76,13 @@ const userSlice = createSlice({
                 state.isError = true;
                 state.email = "";
                 state.name = "";
+                state.photo = "";
                 state.error = action.error.message;
             });
     },
 })
 
 
-export const { setUser, toggleLoading } = userSlice.actions;
+export const { setUser, toggleLoading, logout } = userSlice.actions;
 
 export default userSlice.reducer;

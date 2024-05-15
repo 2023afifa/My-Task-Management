@@ -1,12 +1,28 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css"
+import { useDispatch, useSelector } from "react-redux";
+import { signOut } from "firebase/auth";
+import auth from "../../Firebase/firebase.config";
+import { logout } from "../../redux/features/user/userSlice";
 
 const Navbar = () => {
+    const { name, photo, email } = useSelector((state) => state.userSlice);
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        signOut(auth);
+        dispatch(logout());
+    }
 
     const navLink =
         <>
             <li><NavLink className="mr-2" to="/">Home</NavLink></li>
-            <li><NavLink className="mr-2" to="/login">Login</NavLink></li>
+            {
+                email ?
+                    <li><NavLink onClick={handleLogout} className="mr-2" to="/login">Logout</NavLink></li>
+                    :
+                    <li><NavLink className="mr-2" to="/login">Login</NavLink></li>
+            }
         </>
 
     return (
@@ -31,9 +47,22 @@ const Navbar = () => {
                     <div className="flex-none navStyle">
                         <ul className="menu menu-horizontal px-1 lg:text-lg font-medium space-x-5 items-center">
                             {navLink}
-                            <Link to="/signup">
-                                <button className="bg-purple-700 text-slate-200 py-2 px-5 rounded-3xl">Join</button>
-                            </Link>
+                            {
+                                email ?
+                                    <>
+                                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                            <div className="w-8 md:w-10 rounded-full">
+                                                <img src={photo} />
+                                            </div>
+                                        </label>
+                                    </>
+                                    :
+                                    <>
+                                        <Link to="/signup">
+                                            <button className="bg-purple-700 text-slate-200 py-2 px-5 rounded-3xl">Join</button>
+                                        </Link>
+                                    </>
+                            }
                         </ul>
                     </div>
                 </div>
