@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PropTypes from "prop-types";
+import Loading from '../Loading/Loading';
 
 
 const PrivateRoute = ({ children }) => {
@@ -10,7 +11,7 @@ const PrivateRoute = ({ children }) => {
 
 
     if (isLoading) {
-        return <span className="loading loading-dots loading-md"></span>;
+        return <Loading></Loading>;
     }
 
     if (!isLoading && !email) {

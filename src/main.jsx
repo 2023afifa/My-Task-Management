@@ -13,6 +13,7 @@ import PrivateRoute from './Components/Routes/PrivateRoute.jsx';
 import Dashboard from './Components/DashboardPage/Dashboard/Dashboard.jsx';
 import AllTasks from './Components/DashboardPage/AllTasks/AllTasks.jsx';
 import App from './App.jsx';
+import Archive from './Components/DashboardPage/Archive/Archive.jsx';
 
 
 export const router = createBrowserRouter([
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "alltasks",
         element: <AllTasks></AllTasks>,
+      },
+      {
+        path: "archive",
+        element: <Archive></Archive>,
       },
     ]
   }
