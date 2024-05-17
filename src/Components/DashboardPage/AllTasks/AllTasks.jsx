@@ -3,10 +3,16 @@ import AllTasksSidebar from "./AllTasksSidebar";
 import TasksCard from "./TasksCard";
 import { useState } from "react";
 import AddTaskModal from "./AddTaskModal";
+import { useSelector } from "react-redux";
 
 
 const AllTasks = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { tasks } = useSelector(state => state.tasksSlice);
+
+    const pendingTasks = tasks?.filter((item) => item.status == 'pending');
+    const runningTasks = tasks?.filter((item) => item.status == 'running');
+    const doneTasks = tasks?.filter((item) => item.status == 'done');
 
     return (
         <>
@@ -32,7 +38,9 @@ const AllTasks = () => {
                                 </div>
                                 <p className="text-xl font-medium mr-3">0</p>
                             </div>
-                            <TasksCard></TasksCard>
+                            {
+                                pendingTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
+                            }
                         </div>
 
                         <div>
@@ -43,7 +51,9 @@ const AllTasks = () => {
                                 </div>
                                 <p className="text-xl font-medium mr-3">0</p>
                             </div>
-                            <TasksCard></TasksCard>
+                            {
+                                runningTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
+                            }
                         </div>
 
                         <div>
@@ -54,7 +64,9 @@ const AllTasks = () => {
                                 </div>
                                 <p className="text-xl font-medium mr-3">0</p>
                             </div>
-                            <TasksCard></TasksCard>
+                            {
+                                doneTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
+                            }
                         </div>
 
                     </div>

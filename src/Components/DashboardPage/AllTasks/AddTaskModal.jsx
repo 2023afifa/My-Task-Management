@@ -1,11 +1,14 @@
 import { useForm } from 'react-hook-form';
 import Modal from './Modal';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../redux/features/tasks/tasksSlice';
 // import { useAddTaskMutation } from '../../redux/features/tasks/taskApi';
 
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
     const { register, handleSubmit, reset } = useForm();
     //   const [addTask, { data, error }] = useAddTaskMutation();
+    const dispatch = useDispatch();
 
     //   console.log(data);
     //   console.log(error);
@@ -17,6 +20,9 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
 
     const onSubmit = (data) => {
         // addTask({ ...data, status: "pending" });
+
+        dispatch(addTask(data));
+
         onCancel();
     };
 
@@ -39,7 +45,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                         Description
                     </label>
                     <textarea
-                        className="w-full rounded-md"
+                        className="w-full rounded-md p-1"
                         type="text"
                         id="description"
                         {...register('description')}
@@ -50,7 +56,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                         Deadline
                     </label>
                     <input
-                        className="w-full rounded-md"
+                        className="w-full rounded-md p-1"
                         type="date"
                         id="date"
                         {...register('date')}
@@ -61,7 +67,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                         Priority
                     </label>
                     <select
-                        className="w-full rounded-md"
+                        className="w-full rounded-md p-1"
                         id="priority"
                         {...register('priority')}
                     >
@@ -76,11 +82,11 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                     <button
                         onClick={() => onCancel()}
                         type="button"
-                        className="btn normal-case"
+                        className="btn bg-red-500 text-white normal-case border-none"
                     >
                         Cancel
                     </button>
-                    <button type="submit" className="btn bg-slate-700 text-white normal-case">
+                    <button type="submit" className="btn bg-blue-500 text-white normal-case border-none">
                         Submit
                     </button>
                 </div>
