@@ -3,12 +3,12 @@ import AllTasksSidebar from "./AllTasksSidebar";
 import TasksCard from "./TasksCard";
 import { useState } from "react";
 import AddTaskModal from "./AddTaskModal";
-import { useSelector } from "react-redux";
+import { useGetTasksQuery } from "../../redux/features/api/baseApi";
 
 
 const AllTasks = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { tasks } = useSelector(state => state.tasksSlice);
+    const { data: tasks, isLoading } = useGetTasksQuery();
 
     const pendingTasks = tasks?.filter((item) => item.status == 'pending');
     const runningTasks = tasks?.filter((item) => item.status == 'running');
@@ -36,10 +36,17 @@ const AllTasks = () => {
                                     <div className="border-4 border-red-500 rounded-full h-5 w-5 mx-2"></div>
                                     <h3 className="text-xl font-medium">To-do</h3>
                                 </div>
-                                <p className="text-xl font-medium mr-3">0</p>
+                                <p className="text-xl font-medium mr-3">
+                                    {pendingTasks?.length}
+                                </p>
                             </div>
                             {
-                                pendingTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
+                                pendingTasks?.length === 0 ?
+                                    <>
+                                        <div className="p-5 text-lg text-center bg-slate-100 rounded">Nothing in "To-Do"</div>
+                                    </>
+                                    :
+                                    pendingTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
                             }
                         </div>
 
@@ -49,10 +56,17 @@ const AllTasks = () => {
                                     <div className="border-4 border-yellow-500 rounded-full h-5 w-5 mx-2"></div>
                                     <h3 className="text-xl font-medium">On Progress</h3>
                                 </div>
-                                <p className="text-xl font-medium mr-3">0</p>
+                                <p className="text-xl font-medium mr-3">
+                                    {runningTasks?.length}
+                                </p>
                             </div>
                             {
-                                runningTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
+                                runningTasks?.length === 0 ?
+                                    <>
+                                        <div className="p-5 text-lg text-center bg-slate-100 rounded">Nothing in "On Progress"</div>
+                                    </>
+                                    :
+                                    runningTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
                             }
                         </div>
 
@@ -62,10 +76,17 @@ const AllTasks = () => {
                                     <div className="border-4 border-green-500 rounded-full h-5 w-5 mx-2"></div>
                                     <h3 className="text-xl font-medium">Completed</h3>
                                 </div>
-                                <p className="text-xl font-medium mr-3">0</p>
+                                <p className="text-xl font-medium mr-3">
+                                    {doneTasks?.length}
+                                </p>
                             </div>
                             {
-                                doneTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
+                                doneTasks?.length === 0 ?
+                                    <>
+                                        <div className="p-5 text-lg text-center bg-slate-100 rounded">Nothing in "Completed"</div>
+                                    </>
+                                    :
+                                    doneTasks?.map(item => <TasksCard key={item.id} task={item}></TasksCard>)
                             }
                         </div>
 
