@@ -3,7 +3,8 @@ import AllTasksSidebar from "./AllTasksSidebar";
 import TasksCard from "./TasksCard";
 import { useState } from "react";
 import AddTaskModal from "./AddTaskModal";
-import { useGetTasksQuery } from "../../redux/features/api/baseApi";
+import { useGetTasksQuery } from "../../redux/features/tasks/tasksApi";
+
 
 
 const AllTasks = () => {
@@ -94,7 +95,7 @@ const AllTasks = () => {
 
                 </div>
 
-                <div className="w-1/4 text-center p-5 bg-slate-500 h-screen rounded-s-2xl">
+                <div className="w-1/4 text-center p-5 bg-slate-500 min-h-screen rounded-s-2xl">
                     <AllTasksSidebar></AllTasksSidebar>
                 </div>
             </div>
