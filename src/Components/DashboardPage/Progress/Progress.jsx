@@ -19,22 +19,22 @@ const Progress = () => {
 
             <div className="divider"></div>
 
-            <div className="flex justify-between">
+            <div className="lg:flex lg:justify-between gap-10">
                 {
                     myTasks?.length === 0 ?
                         <>
                             <p className="text-center text-xl my-10">Nothing In "Progress"</p>
                         </>
                         :
-                        <div className="grid lg:grid-cols-3 gap-5 w-2/3">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:w-2/3">
                             {
                                 myTasks?.map((task) => <AProgress key={task.id} task={task}></AProgress>)
                             }
                         </div>
                 }
 
-                <div className="flex flex-col gap-2">
-                    <div className="card w-96 bg-neutral text-neutral-content">
+                <div className="flex flex-col justify-center gap-2">
+                    <div className="card w-96 bg-neutral text-neutral-content mx-auto">
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Task Reminders</h2>
                             <p>Team Meeting: May 19, 2024</p>
@@ -44,7 +44,7 @@ const Progress = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="card w-96 bg-neutral text-neutral-content">
+                    <div className="card w-96 bg-neutral text-neutral-content mx-auto">
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Recent Activity</h2>
                             <p>Completed: <span className="font-semibold">Design Mockups</span></p>
@@ -53,7 +53,7 @@ const Progress = () => {
                             <p className="text-gray-500 text-sm">1 day ago</p>
                         </div>
                     </div>
-                    <div className="card w-96 bg-neutral text-neutral-content">
+                    <div className="card w-96 bg-neutral text-neutral-content mx-auto">
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Task Overview</h2>
                             <p>Completion Rate - Successful</p>

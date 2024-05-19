@@ -40,7 +40,7 @@ const Signup = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="flex items-center mx-20">
+            <div className="lg:flex lg:items-center lg:mx-20">
                 <img className="max-h-screen" src="https://i.ibb.co/jbj8KPr/4707071.jpg" alt="" />
                 <div className="flex-1">
                     <h2 className="text-center text-3xl text-purple-700 font-bold pt-10">Join Us!!!</h2>

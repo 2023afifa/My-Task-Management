@@ -28,7 +28,7 @@ const TasksCard = ({ task }) => {
 
 
     return (
-        <div className="w-80 mb-2 p-5 bg-slate-100 rounded">
+        <div className="lg:w-80 mb-2 p-5 bg-slate-100 rounded">
             <h3 className="text-lg font-medium">{task.title}</h3>
             <p className="text-justify text-sm">{task.description}</p>
             <p className="text-sm font-medium mt-2 mb-5">Deadline: {task.date}</p>

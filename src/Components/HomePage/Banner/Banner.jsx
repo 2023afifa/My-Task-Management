@@ -5,8 +5,8 @@ const Banner = () => {
     const { email } = useSelector(state => state.userSlice);
 
     return (
-        <div className="md:flex md:justify-between md:items-center">
-            <div className="flex-1 pl-10 border-2 border-red-400">
+        <div className="flex flex-col-reverse lg:flex lg:flex-row lg:justify-between lg:items-center">
+            <div className="flex-1 pl-10">
                 <h1 className="text-2xl md:text-5xl font-bold mb-5">Effortless Task Management: Organize, Collaborate, and Stay Productive</h1>
                 <p className="text-lg mb-5">Empower Your Team to Achieve More. Effortlessly Prioritize Tasks, Collaborate Seamlessly, and Stay on Track with Our Intuitive Task Management Platform.</p>
                 <Link to={email ? "/dashboard/alltasks" : "/login"}>

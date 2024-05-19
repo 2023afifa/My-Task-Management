@@ -42,7 +42,7 @@ const Login = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="flex items-center mx-20">
+            <div className="lg:flex lg:items-center lg:mx-20">
                 <img className="max-h-screen" src="https://i.ibb.co/GMy4RVB/6343845.jpg" alt="" />
                 <div className="flex-1">
                     <h2 className="text-center text-4xl text-purple-700 font-semibold pt-10 mb-10">Welcome Back!!!</h2>

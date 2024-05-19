@@ -32,9 +32,9 @@ const AllTasks = () => {
 
                     <div className="divider"></div>
 
-                    <div className="flex justify-between">
+                    <div className="lg:flex lg:justify-between">
                         <div>
-                            <div className="bg-slate-200 rounded p-2 flex justify-between w-80 mb-5">
+                            <div className="bg-slate-200 rounded p-2 flex justify-between lg:w-80 mb-5">
                                 <div className="flex items-center">
                                     <div className="border-4 border-red-500 rounded-full h-5 w-5 mx-2"></div>
                                     <h3 className="text-xl font-medium">To-do</h3>
@@ -54,7 +54,7 @@ const AllTasks = () => {
                         </div>
 
                         <div>
-                            <div className="bg-slate-200 rounded p-2 flex justify-between w-80 mb-5">
+                            <div className="bg-slate-200 rounded p-2 flex justify-between lg:w-80 mb-5">
                                 <div className="flex items-center">
                                     <div className="border-4 border-yellow-500 rounded-full h-5 w-5 mx-2"></div>
                                     <h3 className="text-xl font-medium">On Progress</h3>
@@ -74,7 +74,7 @@ const AllTasks = () => {
                         </div>
 
                         <div>
-                            <div className="bg-slate-200 rounded p-2 flex justify-between w-80 mb-5">
+                            <div className="bg-slate-200 rounded p-2 flex justify-between lg:w-80 mb-5">
                                 <div className="flex items-center">
                                     <div className="border-4 border-green-500 rounded-full h-5 w-5 mx-2"></div>
                                     <h3 className="text-xl font-medium">Completed</h3>
@@ -97,7 +97,7 @@ const AllTasks = () => {
 
                 </div>
 
-                <div className="w-1/4 text-center p-5 bg-slate-500 min-h-screen rounded-s-2xl">
+                <div className="lg:w-1/4 text-center p-5 bg-slate-500 min-h-screen rounded-s-2xl">
                     <AllTasksSidebar></AllTasksSidebar>
                 </div>
             </div>
