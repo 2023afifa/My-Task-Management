@@ -3,10 +3,12 @@ import Navbar from "../HomePage/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import { createUser } from "../redux/features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useAddUsersMutation } from "../redux/features/user/userApi";
 
 const Signup = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const { isLoading, email } = useSelector((state) => state.userSlice);
+    const [addUser] = useAddUsersMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -32,6 +34,7 @@ const Signup = () => {
         }
 
         dispatch(createUser({ email, password, name, photo }));
+        addUser({ email, name, photo });
     }
 
     return (

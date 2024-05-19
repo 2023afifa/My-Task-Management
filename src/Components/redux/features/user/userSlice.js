@@ -42,6 +42,8 @@ export const googleLoginUser = createAsyncThunk("userSlice/googleLoginUser", asy
 
     return {
         email: data.user.email,
+        name: data.user.displayName,
+        photo: data.user.photoURL,
     };
 })
 

@@ -1,5 +1,8 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+
 
 const Dashboard = () => {
     return (
@@ -9,6 +12,7 @@ const Dashboard = () => {
             </div>
             <div className="w-full bg-slate-300 rounded-s-2xl">
                 <Outlet></Outlet>
+                <ToastContainer></ToastContainer>
             </div>
         </div>
     );

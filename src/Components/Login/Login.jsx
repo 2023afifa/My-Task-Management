@@ -3,12 +3,16 @@ import Navbar from "../HomePage/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { googleLoginUser, loginUser } from "../redux/features/user/userSlice";
+import { useAddUsersMutation } from "../redux/features/user/userApi";
 
 const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
-    const { isLoading, email } = useSelector((state) => state.userSlice);
+    const { isLoading, email, name, photo } = useSelector((state) => state.userSlice);
+    const [addUser] = useAddUsersMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    console.log(email);
 
     useEffect(() => {
         if (!isLoading && email) {
@@ -27,8 +31,12 @@ const Login = () => {
 
     }
 
-    const handleGoogleLogIn = () => {
-        dispatch(googleLoginUser());
+    const handleGoogleLogIn = async () => {
+        const resultAction = await dispatch(googleLoginUser());
+        if (googleLoginUser.fulfilled.match(resultAction)) {
+            const { email, name, photo } = resultAction.payload;
+            await addUser({ email, name, photo });
+        }
     }
 
     return (
@@ -39,7 +47,7 @@ const Login = () => {
                 <div className="flex-1">
                     <h2 className="text-center text-4xl text-purple-700 font-semibold pt-10 mb-10">Welcome Back!!!</h2>
                     <p className=" text-center">If you do not have any account <Link to="/signup"><span className="text-purple-700 font-semibold">Sign up</span></Link> here</p>
-                    <p className="text-center">Or, You Can Login with <a onClick={handleGoogleLogIn} className="text-purple-700 font-semibold">Google</a></p>
+                    <p className="text-center">Or, You Can Login with <a onClick={handleGoogleLogIn} className="text-purple-700 font-semibold cursor-pointer">Google</a></p>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">

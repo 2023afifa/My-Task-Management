@@ -4,16 +4,18 @@ import TasksCard from "./TasksCard";
 import { useState } from "react";
 import AddTaskModal from "./AddTaskModal";
 import { useGetTasksQuery } from "../../redux/features/tasks/tasksApi";
-
+import { useSelector } from "react-redux";
 
 
 const AllTasks = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { data: tasks, isLoading } = useGetTasksQuery();
+    const { email } = useSelector(state => state.userSlice);
 
-    const pendingTasks = tasks?.filter((item) => item.status == 'pending');
-    const runningTasks = tasks?.filter((item) => item.status == 'running');
-    const doneTasks = tasks?.filter((item) => item.status == 'done');
+    const myTasks = tasks?.filter((item) => item.useremail === email);
+    const pendingTasks = myTasks?.filter((item) => item.status == 'pending');
+    const runningTasks = myTasks?.filter((item) => item.status == 'running');
+    const doneTasks = myTasks?.filter((item) => item.status == 'done');
 
     return (
         <>
