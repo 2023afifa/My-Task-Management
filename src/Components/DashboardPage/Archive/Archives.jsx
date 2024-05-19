@@ -20,7 +20,7 @@ const Archives = () => {
             <div className="divider"></div>
 
             {
-                myTasks.length === 0 ?
+                myTasks?.length === 0 ?
                     <>
                         <p className="text-center text-xl my-10">Nothing In "Archive"</p>
                     </>

@@ -29,7 +29,7 @@ const Sidebar = () => {
                 <NavLink to="/dashboard/archive" className={({ isActive }) => isActive ? "text-gray-200" : "text-gray-500"}>
                     <BsArchiveFill className="text-3xl mx-auto hover:text-gray-200 mb-5" />
                 </NavLink>
-                <NavLink to="/dashboard/calender" className={({ isActive }) => isActive ? "text-gray-200" : "text-gray-500"}>
+                <NavLink to="/dashboard/progress" className={({ isActive }) => isActive ? "text-gray-200" : "text-gray-500"}>
                     <FaCalendarMinus className="text-3xl mx-auto hover:text-gray-200 mb-5" />
                 </NavLink>
                 <NavLink to="/" className={({ isActive }) => isActive ? "text-gray-200" : "text-gray-500"}>

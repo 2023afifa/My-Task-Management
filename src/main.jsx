@@ -14,6 +14,7 @@ import Dashboard from './Components/DashboardPage/Dashboard/Dashboard.jsx';
 import AllTasks from './Components/DashboardPage/AllTasks/AllTasks.jsx';
 import App from './App.jsx';
 import Archives from './Components/DashboardPage/Archive/Archives.jsx';
+import Progress from './Components/DashboardPage/Progress/Progress.jsx';
 
 
 export const router = createBrowserRouter([
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "archive",
         element: <Archives></Archives>,
+      },
+      {
+        path: "progress",
+        element: <Progress></Progress>,
       },
     ]
   }
