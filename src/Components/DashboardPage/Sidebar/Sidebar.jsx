@@ -19,7 +19,7 @@ const Sidebar = () => {
     return (
         <div className="flex flex-col h-full">
             <div className="mt-6 mb-28 mx-3 lg:mx-5 bg-gray-100 rounded-lg">
-                <img className="w-10 p-1 rounded-md mx-auto" src="../../../../images/checklist.png" alt="" />
+                <img className="w-10 p-1 rounded-md mx-auto" src="https://i.ibb.co/LdTnC8q/checklist.png" alt="" />
             </div>
             <div className="flex flex-col h-full">
                 <NavLink to="/dashboard/alltasks" className={({ isActive }) => isActive ? "text-gray-200" : "text-gray-500"}>

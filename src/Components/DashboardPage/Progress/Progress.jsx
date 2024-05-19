@@ -2,7 +2,7 @@ import { FaCalendarMinus } from "react-icons/fa";
 import { useGetTasksQuery } from "../../redux/features/tasks/tasksApi";
 import { useSelector } from "react-redux";
 import AProgress from "./AProgress";
-import AllTasksSidebar from "../AllTasks/AllTasksSidebar";
+
 
 const Progress = () => {
     const { data: tasks, isLoading } = useGetTasksQuery();
@@ -23,7 +23,7 @@ const Progress = () => {
                 {
                     myTasks?.length === 0 ?
                         <>
-                            <p className="text-center text-xl my-10">Nothing In "Progress"</p>
+                            <p className="text-center text-xl my-10">Nothing in "Progress". Because you don't have any To-do, On Progress or, Completed task left on your board.</p>
                         </>
                         :
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:w-2/3">
